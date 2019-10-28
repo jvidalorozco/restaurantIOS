@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let window = UIWindow()
     let locationService = LocationService()
     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-
+    let service = MoyaProvider<YelpService.BusinessProvider>()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
+        service.request(.search(lat: <#T##Double#>, lon: <#T##Double#>), completion: <#T##Completion##Completion##(Result<Response, MoyaError>) -> Void#>)
         
         switch locationService.status {
         case .notDetermined,.denied,.restricted:
