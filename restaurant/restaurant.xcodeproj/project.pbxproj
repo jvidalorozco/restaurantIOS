@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5245721C2367E099007D2008 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245721B2367E099007D2008 /* Models.swift */; };
 		5257C02823661662009F4826 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C02723661662009F4826 /* BaseView.swift */; };
 		5257C02C2366174D009F4826 /* DetailFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C02B2366174D009F4826 /* DetailFoodView.swift */; };
 		5257C02E236618FF009F4826 /* DetailsFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C02D236618FF009F4826 /* DetailsFoodViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		30FBC7FD17F3C140AE7AA077 /* Pods-restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant.debug.xcconfig"; path = "Target Support Files/Pods-restaurant/Pods-restaurant.debug.xcconfig"; sourceTree = "<group>"; };
 		46F02E3CF9FB23FFE221D8E5 /* Pods_restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5245721B2367E099007D2008 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		5257C02723661662009F4826 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		5257C02B2366174D009F4826 /* DetailFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodView.swift; sourceTree = "<group>"; };
 		5257C02D236618FF009F4826 /* DetailsFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFoodViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +45,7 @@
 		5258E1FE2362948A0037037F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5258E2002362948A0037037F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52966A5023666B6D00740CA4 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
-		8378F0F02367666F0033001A /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8378F0F02367666F0033001A /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8378F0F2236769100033001A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FC8A1218316920532786072B /* Pods-restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant.release.xcconfig"; path = "Target Support Files/Pods-restaurant/Pods-restaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 			children = (
 				5257C033236619AE009F4826 /* Views */,
 				5257C03123661992009F4826 /* RestaurantTableViewController.swift */,
+				5245721B2367E099007D2008 /* Models.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				8378F0F3236769100033001A /* NetworkService.swift in Sources */,
 				52966A5123666B6D00740CA4 /* LocationServices.swift in Sources */,
 				5257C02C2366174D009F4826 /* DetailFoodView.swift in Sources */,
+				5245721C2367E099007D2008 /* Models.swift in Sources */,
 				5258E1F7236294890037037F /* ViewController.swift in Sources */,
 				5257C03223661992009F4826 /* RestaurantTableViewController.swift in Sources */,
 				5258E1F3236294890037037F /* AppDelegate.swift in Sources */,
