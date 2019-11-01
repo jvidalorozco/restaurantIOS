@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               case .success(let response):
                 let root = try? self.jsonDecoder.decode(Root.self, from: response.data)
                 let viewModels = root?.businesses.compactMap(RestaurantListViewModel.init)
+                if let nav = self.window.rootViewController as? UINavigationController,
+                    let restaurantListViewController = nav.topViewController as? RestaurantTableViewController {
+                    restaurantListViewController.viewModels = viewModels ?? []
+                }
               case .failure(let error):
                 print("Error: \(error)")
             }
@@ -43,7 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             locationViewController?.locationService = locationService
             window.rootViewController = locationViewController
         default:
-            assertionFailure()
+            let nav = storyboard.instantiateViewController(identifier: "RestaurantNavigationController") as? UINavigationController
+            window.rootViewController = nav
+            loadBusiness()
         }
         window.makeKeyAndVisible()
         return true
@@ -52,7 +58,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func loadBusiness(){
         service.request(.search(lat: 42.361145, lon: -71.057083)) { (result) in
-            
+           switch result {
+              case .success(let response):
+                let root = try? self.jsonDecoder.decode(Root.self, from: response.data)
+                let viewModels = root?.businesses.compactMap(RestaurantListViewModel.init)
+                if let nav = self.window.rootViewController as? UINavigationController,
+                    let restaurantListViewController = nav.topViewController as? RestaurantTableViewController {
+                    restaurantListViewController.viewModels = viewModels ?? []
+                }
+              case .failure(let error):
+                print("Error: \(error)")
+            }
         }
     }
     

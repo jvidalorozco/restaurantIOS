@@ -34,7 +34,7 @@ class RestaurantTableViewController: UITableViewController {
         
         let vm = viewModels[indexPath.row]
         
-        cell.configure(vm)
+        cell.configure(with:vm)
         
         return cell
     }
