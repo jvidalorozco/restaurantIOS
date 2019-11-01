@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch result {
               case .success(let response):
                 let root = try? self.jsonDecoder.decode(Root.self, from: response.data)
+                let viewModels = root?.businesses.compactMap(RestaurantListViewModel.init)
               case .failure(let error):
                 print("Error: \(error)")
             }
@@ -46,6 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window.makeKeyAndVisible()
         return true
+    }
+    
+    
+    private func loadBusiness(){
+        service.request(.search(lat: 42.361145, lon: -71.057083)) { (result) in
+            
+        }
     }
     
     
