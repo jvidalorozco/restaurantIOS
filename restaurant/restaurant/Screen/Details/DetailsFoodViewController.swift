@@ -11,7 +11,11 @@ import UIKit
 class DetailsFoodViewController: UIViewController {
 
     @IBOutlet weak var detailsFoodView : DetailsFoodView!
-    
+    var viewModel: DetailsViewModel? {
+        didSet {
+            updateView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,5 +23,16 @@ class DetailsFoodViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func updateView() {
+        if let viewModel = viewModel {
+            guard let detailsFoodView = detailsFoodView else { return }
+            detailsFoodView.priceLabel.text = viewModel.price
+            detailsFoodView.hoursLabel.text = viewModel.isOpen
+            detailsFoodView.locationLabel.text = viewModel.phoneNumber
+            detailsFoodView.ratingsLabel.text = viewModel.rating
+            
+            
+        }
+    }
    
 }

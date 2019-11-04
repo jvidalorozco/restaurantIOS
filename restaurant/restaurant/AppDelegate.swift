@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
     let service = MoyaProvider<YelpService.BusinessProvider>()
     let jsonDecoder = JSONDecoder()
+    var navigationController : UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+       
+        
        
         
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -48,13 +51,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = locationViewController
         default:
             let nav = storyboard.instantiateViewController(identifier: "RestaurantNavigationController") as? UINavigationController
+            self.navigationController = nav
             window.rootViewController = nav
-            loadBusiness()
+            locationService.getLocation()
+            (nav?.topViewController as? RestaurantTableViewController)?.delegate = self
         }
         window.makeKeyAndVisible()
         return true
     }
     
+    private func loadDetails(with id: String) {
+        service.request(.details(id: id)) { [weak self] (result) in
+                   
+                   switch result {
+                     case .success(let response):
+                        guard let strongSelf = self else {return}
+                        if let details = try? strongSelf.jsonDecoder.decode(Details.self, from: response.data){
+                          let detailsViewModel = DetailsViewModel(details: details)
+                            (strongSelf.navigationController?.topViewController as? DetailsFoodViewController)?.viewModel = detailsViewModel
+                       }
+                    case .failure(let error):
+                      print("Error: \(error)")
+                   }
+               }
+    }
     
     private func loadBusiness(){
         service.request(.search(lat: 42.361145, lon: -71.057083)) { (result) in
@@ -77,3 +97,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+//MARK: Extensions
+extension AppDelegate: LocationActions, ListActions {
+    func didTapAllow() {
+       locationService.requestLocationAuthorization()
+    }
+    
+    func didTapCell(_ viewModel: RestaurantListViewModel) {
+        loadDetails(with: viewModel.id)
+    }
+}

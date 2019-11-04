@@ -16,6 +16,7 @@ enum YelpService {
     
     enum BusinessProvider: TargetType {
         case search(lat: Double, lon: Double)
+        case details(id: String)
         
         var baseURL: URL {
             return URL(string: "https://api.yelp.com/v3/businesses")!
@@ -23,9 +24,13 @@ enum YelpService {
         
         var path: String {
             switch self {
-            case .search:
+             case .search:
                 return "/search"
+             case let .details(id):
+                return "/\(id)"
             }
+           
+            
         }
         var method: Moya.Method {
             return .get
@@ -35,8 +40,10 @@ enum YelpService {
         }
         var task: Task {
             switch self {
-            case let .search(lat,lon):
-                return .requestParameters(parameters: ["latitude": lat, "longitude": lon] , encoding: URLEncoding.queryString)
+              case let .search(lat,lon):
+                return .requestParameters(parameters: ["latitude": lat, "longitude": lon, "limit": 1] , encoding: URLEncoding.queryString)
+            case let .details:
+                return .requestPlain
             }
         }
         var headers: [String : String]? {

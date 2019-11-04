@@ -385,10 +385,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" largeTitleDisplayMode="never" id="DaD-OW-rVp"/>
                     <size key="freeformSize" width="414" height="1024"/>
+                    <connections>
+                        <outlet property="detailsFoodView" destination="gZn-i3-Kqy" id="UbT-9s-Hty"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqm-hG-Tmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3000.0000000000005" y="136.60714285714286"/>
+            <point key="canvasLocation" x="2865" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7vN-2I-k1O">

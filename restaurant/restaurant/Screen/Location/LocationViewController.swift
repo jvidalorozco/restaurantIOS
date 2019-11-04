@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LocationActions: class {
+    func didTapAllow()
+}
+
 class LocationViewController: UIViewController {
 
     @IBOutlet weak var locationView: LocationView!
